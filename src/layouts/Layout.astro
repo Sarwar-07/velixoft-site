@@ -1,0 +1,253 @@
+---
+import '../styles/global.css';
+import ThemeToggle from '../components/ThemeToggle.astro';
+
+const { title = "Velixoft | Modern Websites, Stunning Designs, Powerful Software" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth bg-slate-50 text-slate-900 dark:bg-[#07090E] dark:text-slate-100 antialiased" style="scroll-behavior: smooth; scroll-padding-top: 5rem;">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Caveat:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+
+    <!-- Prevent theme flash on reload -->
+    <script is:inline>
+      (() => {
+        try {
+          const theme = localStorage.getItem('theme') || 'dark';
+          if (theme === 'light') {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+          } else {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+          }
+        } catch (_) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen flex flex-col font-['Plus_Jakarta_Sans',sans-serif] selection:bg-indigo-500 selection:text-white relative overflow-x-hidden bg-slate-50 text-slate-900 dark:bg-[#07090E] dark:text-slate-100 transition-colors duration-300">
+    
+    <!-- Top Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200 dark:border-white/10 transition-colors duration-300">
+      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+        
+        <!-- Logo -->
+        <a href="#home" class="flex items-center group">
+          <div class="flex items-center px-2 py-1 rounded-xl bg-slate-950 dark:bg-transparent border border-slate-800/80 dark:border-transparent shadow-sm dark:shadow-none transition">
+            <img
+              src="/logo.png"
+              alt="Velixoft"
+              class="h-10 sm:h-12 w-auto object-contain transition duration-200 group-hover:scale-105"
+            />
+          </div>
+        </a>
+
+        <!-- Center Nav Links with Dynamic Active Indicator -->
+        <nav id="nav-menu" class="hidden md:flex items-center gap-8 text-sm font-medium">
+          <a href="#home" class="nav-link active text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition py-1 relative">Home</a>
+          <a href="#services" class="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition py-1 relative">Services</a>
+          <a href="#about" class="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition py-1 relative">About</a>
+          <a href="#portfolio" class="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition py-1 relative">Portfolio</a>
+          <a href="#contact" class="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition py-1 relative">Contact</a>
+        </nav>
+
+        <!-- Right Action Button & Theme Toggle -->
+        <div class="flex items-center gap-4">
+          <ThemeToggle />
+          <a 
+            href="#contact" 
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white text-xs font-bold tracking-wide transition shadow-lg shadow-indigo-600/25 cursor-pointer"
+          >
+            Start a Project
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 pt-20">
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-white/[0.06] bg-slate-100 dark:bg-[#05070A] py-10 transition-colors duration-300">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6 text-xs text-slate-500">
+        <a href="#home" class="flex items-center group">
+          <div class="flex items-center px-2 py-1 rounded-xl bg-slate-950 dark:bg-transparent border border-slate-800/80 dark:border-transparent shadow-sm dark:shadow-none transition">
+            <img
+              src="/logo.png"
+              alt="Velixoft"
+              class="h-8 sm:h-10 w-auto object-contain transition duration-200 group-hover:scale-105"
+            />
+          </div>
+        </a>
+
+        <div class="flex items-center gap-6 text-slate-600 dark:text-slate-400 font-medium">
+          <a href="#home" class="hover:text-slate-950 dark:hover:text-white transition">Home</a>
+          <a href="#services" class="hover:text-slate-950 dark:hover:text-white transition">Services</a>
+          <a href="#about" class="hover:text-slate-950 dark:hover:text-white transition">About</a>
+          <a href="#portfolio" class="hover:text-slate-950 dark:hover:text-white transition">Portfolio</a>
+          <a href="#contact" class="hover:text-slate-950 dark:hover:text-white transition">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-4 text-slate-500 dark:text-slate-400">
+          <a href="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition" aria-label="LinkedIn">
+            <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.45 1.45 0 0 0 1.45-1.45 1.45 1.45 0 0 0-1.45-1.45 1.45 1.45 0 0 0-1.45 1.45c0 .8.65 1.45 1.45 1.45m1.39 9.74v-8.37H5.07v8.37h2.78z"/></svg>
+          </a>
+          <a href="#" class="hover:text-indigo-600 dark:hover:text-indigo-400 transition" aria-label="GitHub">
+            <svg class="w-4 h-4 fill-currentColor" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.1-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+          </a>
+          <span class="ml-2 text-slate-500 dark:text-slate-400">© 2026 Velixoft. All rights reserved.</span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Styles for Navigation and Active Indicator -->
+    <style is:global>
+      .nav-link {
+        position: relative;
+        transition: color 0.2s ease;
+      }
+      .nav-link.active {
+        color: #0f172a !important; /* slate-900 in light mode */
+      }
+      html.dark .nav-link.active {
+        color: #ffffff !important; /* white in dark mode */
+      }
+      .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: rgb(99 102 241); /* indigo-500 */
+        border-radius: 9999px;
+      }
+    </style>
+
+    <!-- Dynamic Scrollspy for Active Navbar Underline -->
+    <script is:inline>
+      function initScrollspy() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link');
+        if (!sections.length || !navLinks.length) return;
+
+        let isClickScrolling = false;
+        let clickTimeout = null;
+
+        function setActive(id) {
+          navLinks.forEach((link) => {
+            const href = link.getAttribute('href');
+            if (href === `#${id}`) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+
+        // Handle navigation link clicks
+        navLinks.forEach((link) => {
+          link.addEventListener('click', () => {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#')) {
+              const targetId = href.slice(1);
+              setActive(targetId);
+              link.blur();
+
+              isClickScrolling = true;
+              clearTimeout(clickTimeout);
+              clickTimeout = setTimeout(() => {
+                isClickScrolling = false;
+              }, 800);
+            }
+          });
+        });
+
+        // Track intersecting sections
+        const visibleSections = new Map();
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            if (isClickScrolling) return;
+
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                visibleSections.set(entry.target.id, entry.intersectionRatio);
+              } else {
+                visibleSections.delete(entry.target.id);
+              }
+            });
+
+            // If near top of page, default to home
+            if (window.scrollY < 80) {
+              setActive('home');
+              return;
+            }
+
+            // If near bottom of page, highlight the last section
+            const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60;
+            if (isAtBottom) {
+              const lastSection = sections[sections.length - 1];
+              if (lastSection) {
+                setActive(lastSection.id);
+                return;
+              }
+            }
+
+            // Highlight the first visible section in document order
+            for (const section of sections) {
+              if (visibleSections.has(section.id)) {
+                setActive(section.id);
+                break;
+              }
+            }
+          },
+          {
+            rootMargin: '-80px 0px -40% 0px',
+            threshold: [0, 0.2, 0.5]
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+
+        // Window scroll listener for immediate top/bottom feedback
+        window.addEventListener(
+          'scroll',
+          () => {
+            if (isClickScrolling) return;
+            if (window.scrollY < 80) {
+              setActive('home');
+            } else if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60) {
+              const lastSection = sections[sections.length - 1];
+              if (lastSection) setActive(lastSection.id);
+            }
+          },
+          { passive: true }
+        );
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initScrollspy);
+      } else {
+        initScrollspy();
+      }
+    </script>
+  </body>
+</html>

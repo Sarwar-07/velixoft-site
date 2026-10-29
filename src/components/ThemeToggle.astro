@@ -1,0 +1,115 @@
+---
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  aria-label="Toggle dark and light theme"
+  class="relative inline-flex h-[32px] w-[60px] shrink-0 cursor-pointer items-center rounded-full border border-slate-300/80 bg-slate-200/90 p-[3px] transition-colors duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 dark:border-white/15 dark:bg-[#0B0F19]"
+>
+  <!-- Background Track Icons -->
+  <span class="flex w-full items-center justify-between px-1.5 select-none pointer-events-none">
+    <!-- Sun Icon (left) -->
+    <svg class="h-3.5 w-3.5 text-amber-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+    </svg>
+    <!-- Moon Icon (right) -->
+    <svg class="h-3.5 w-3.5 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+    </svg>
+  </span>
+
+  <!-- Sliding Knob -->
+  <span
+    id="theme-toggle-knob"
+    class="theme-knob absolute left-[3px] top-[3px] flex h-[24px] w-[24px] items-center justify-center rounded-full bg-white shadow-md transition-transform duration-300 ease-in-out dark:bg-slate-800"
+  >
+    <!-- Sun Icon inside knob (active in light mode) -->
+    <svg id="knob-sun" class="h-3.5 w-3.5 text-amber-500 transition-opacity duration-200" viewBox="0 0 24 24" fill="currentColor">
+      <circle cx="12" cy="12" r="4"></circle>
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path>
+    </svg>
+    <!-- Moon Icon inside knob (active in dark mode) -->
+    <svg id="knob-moon" class="h-3.5 w-3.5 text-indigo-400 transition-opacity duration-200 hidden" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.3 2a10 10 0 0 0-.19 2 10 10 0 0 0 10 10c.7 0 1.37-.07 2-.19A10 10 0 1 1 12.3 2z"></path>
+    </svg>
+  </span>
+</button>
+
+<style is:global>
+  /* When dark, slide knob 28px to the right */
+  html.dark .theme-knob {
+    transform: translateX(28px);
+  }
+  html.dark #knob-sun {
+    display: none;
+  }
+  html.dark #knob-moon {
+    display: block;
+  }
+  html:not(.dark) .theme-knob {
+    transform: translateX(0px);
+  }
+  html:not(.dark) #knob-sun {
+    display: block;
+  }
+  html:not(.dark) #knob-moon {
+    display: none;
+  }
+</style>
+
+<script is:inline>
+  (() => {
+    // Immediate initialization to avoid flash
+    const applyStoredTheme = () => {
+      let theme = 'dark';
+      try {
+        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+          theme = localStorage.getItem('theme');
+        }
+      } catch (_) {}
+
+      if (theme === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('light');
+      } else {
+        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('light');
+      }
+    };
+
+    applyStoredTheme();
+
+    const attachToggle = () => {
+      const toggle = document.getElementById('theme-toggle');
+      if (!toggle) return;
+
+      if (toggle.dataset.bound === 'true') return;
+      toggle.dataset.bound = 'true';
+
+      toggle.addEventListener('click', () => {
+        const isDark = document.documentElement.classList.contains('dark');
+        const newTheme = isDark ? 'light' : 'dark';
+
+        if (newTheme === 'light') {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+        } else {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+        }
+
+        try {
+          localStorage.setItem('theme', newTheme);
+        } catch (_) {}
+      });
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', attachToggle);
+    } else {
+      attachToggle();
+    }
+  })();
+</script>
