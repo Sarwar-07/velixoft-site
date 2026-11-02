@@ -1,0 +1,237 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { project: 'saas-cloud-dashboard' },
+      props: {
+        title: 'SaaS Cloud Dashboard Case Study | Velixoft',
+        category: 'Custom Software Platform',
+        name: 'SaaS Cloud Dashboard',
+        summary: 'A unified cloud management and observability dashboard giving DevOps and executive teams real-time analytics, automated alert routing, and tenant metrics.',
+        themeColor: 'indigo',
+        metrics: [
+          { label: 'Uptime Reliability', value: '99.98%' },
+          { label: 'Avg Query Latency', value: '42ms' },
+          { label: 'Lighthouse Score', value: '100/100' },
+          { label: 'Active Daily Users', value: '45,000+' }
+        ],
+        challenge: 'The client struggled with fragmented monitoring tools, sluggish data rendering exceeding 4 seconds, and frequent session desynchronization across multi-region clusters.',
+        solution: 'We engineered a reactive single-page architecture powered by Astro, React, TypeScript, and a high-throughput Fastify microservices backend with WebSockets for real-time telemetry streaming.',
+        deliverables: [
+          'Modular telemetry widgets with real-time WebSocket feeds',
+          'Role-based access control (RBAC) with audit logging',
+          'Automated dark/light theme switching with custom token styles',
+          'High-performance PostgreSQL and Redis time-series caching'
+        ],
+        technologies: ['React', 'TypeScript', 'Fastify', 'Tailwind CSS', 'PostgreSQL', 'Redis', 'Docker']
+      }
+    },
+    {
+      params: { project: 'gourmet-food-ordering' },
+      props: {
+        title: 'Gourmet Food Ordering Platform Case Study | Velixoft',
+        category: 'Full Stack E-Commerce',
+        name: 'Gourmet Food Ordering',
+        summary: 'An artisanal digital storefront and order management engine connecting local organic producers directly with premium culinary buyers and diners.',
+        themeColor: 'amber',
+        metrics: [
+          { label: 'Mobile Conversion', value: '+240%' },
+          { label: 'Checkout Duration', value: '< 45s' },
+          { label: 'Order Processing', value: 'Instant' },
+          { label: 'Repeat Customer Rate', value: '68%' }
+        ],
+        challenge: 'A cumbersome, high-friction mobile checkout flow was causing an 82% cart abandonment rate, coupled with inaccurate real-time inventory counts across multiple store locations.',
+        solution: 'We built a streamlined, one-click checkout workflow with Apple Pay and Google Pay support, instant address verification, and real-time inventory locking powered by Redis.',
+        deliverables: [
+          'Frictionless 2-step checkout flow with guest ordering support',
+          'Interactive dish customization and dietary filtering engine',
+          'Real-time courier tracking map and SMS notification pipeline',
+          'Automated Stripe merchant payouts and inventory sync'
+        ],
+        technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Stripe', 'Node.js', 'Redis', 'Leaflet Maps']
+      }
+    },
+    {
+      params: { project: 'pulse-mobile-app' },
+      props: {
+        title: 'Pulse Mobile App Case Study | Velixoft',
+        category: 'Mobile UI/UX Design',
+        name: 'Pulse Mobile App',
+        summary: 'An intuitive, gamified health and fitness companion app delivering custom workout routines, biometric tracking, and social community accountability.',
+        themeColor: 'purple',
+        metrics: [
+          { label: 'Daily Active Retention', value: '74%' },
+          { label: 'App Store Rating', value: '4.9 ★' },
+          { label: 'Workout Completions', value: '1.2M+' },
+          { label: 'Community Interactions', value: '380K/mo' }
+        ],
+        challenge: 'Existing fitness apps overwhelm users with complicated tracking spreadsheets and cluttered dashboards, causing user drop-off within the first two weeks.',
+        solution: 'We designed a minimal, gesture-driven user interface featuring micro-animations, customizable daily streaks, and clear visual metric progress rings in Figma, followed by high-performance React Native implementation.',
+        deliverables: [
+          'End-to-end Figma UI/UX prototype and user journey mapping',
+          'Dark-mode optimized workout companion screen with large touch targets',
+          'Haptic feedback integration on completed milestones',
+          'Biometric sensor integration (Apple HealthKit & Google Fit)'
+        ],
+        technologies: ['React Native', 'Figma', 'TypeScript', 'Tailwind', 'HealthKit API', 'GraphQL']
+      }
+    },
+    {
+      params: { project: 'elevate-brand-system' },
+      props: {
+        title: 'Elevate Brand System Case Study | Velixoft',
+        category: 'Graphic Design & Identity',
+        name: 'Elevate Brand System',
+        summary: 'A futuristic visual identity, typography system, and digital asset library engineered for a high-growth fintech platform.',
+        themeColor: 'indigo',
+        metrics: [
+          { label: 'Brand Recognition', value: '+310%' },
+          { label: 'Design Tokens', value: '140+ Tokens' },
+          { label: 'Marketing Consistency', value: '100%' },
+          { label: 'Design Handoff Speed', value: '3x Faster' }
+        ],
+        challenge: 'The fintech company suffered from inconsistent visual styles across marketing channels, inconsistent typography scales, and a generic corporate identity that failed to inspire investor and user confidence.',
+        solution: 'We engineered a comprehensive visual system centered around a modern geometric emblem, high-contrast neon gradients, bespoke typography guidelines, and complete Figma Tokens Studio documentation.',
+        deliverables: [
+          'Vector logo mark in responsive light/dark color variations',
+          'Complete brand manual: typography hierarchy, grid systems, and spacing',
+          'Marketing collateral kit: pitch decks, social media templates, business cards',
+          'Tokenized Figma component library with direct CSS code mappings'
+        ],
+        technologies: ['Figma', 'Tokens Studio', 'Adobe Illustrator', 'SVG Optimization', 'CSS Variables']
+      }
+    }
+  ];
+}
+
+const { title, category, name, summary, themeColor, metrics, challenge, solution, deliverables, technologies } = Astro.props;
+
+const colorMap: Record<string, { badge: string; text: string; bg: string; buttonGradient: string; shadow: string }> = {
+  indigo: {
+    badge: 'bg-indigo-50 dark:bg-white/[0.04] border-indigo-200/80 dark:border-white/[0.08] text-indigo-700 dark:text-indigo-300',
+    text: 'text-indigo-600 dark:text-indigo-400',
+    bg: 'bg-indigo-600/15 dark:bg-indigo-600/20 text-indigo-600 dark:text-indigo-400',
+    buttonGradient: 'from-indigo-600 to-indigo-500',
+    shadow: 'shadow-indigo-600/25'
+  },
+  amber: {
+    badge: 'bg-amber-50 dark:bg-white/[0.04] border-amber-200/80 dark:border-white/[0.08] text-amber-700 dark:text-amber-300',
+    text: 'text-amber-600 dark:text-amber-400',
+    bg: 'bg-amber-600/15 dark:bg-amber-600/20 text-amber-600 dark:text-amber-400',
+    buttonGradient: 'from-amber-600 via-orange-600 to-indigo-600',
+    shadow: 'shadow-amber-600/25'
+  },
+  purple: {
+    badge: 'bg-purple-50 dark:bg-white/[0.04] border-purple-200/80 dark:border-white/[0.08] text-purple-700 dark:text-purple-300',
+    text: 'text-purple-600 dark:text-purple-400',
+    bg: 'bg-purple-600/15 dark:bg-purple-600/20 text-purple-600 dark:text-purple-400',
+    buttonGradient: 'from-purple-600 via-indigo-600 to-pink-600',
+    shadow: 'shadow-purple-600/25'
+  }
+};
+
+const current = colorMap[themeColor] || colorMap.indigo;
+---
+
+<Layout title={title}>
+  <div class="max-w-5xl mx-auto px-6 py-12 lg:py-20">
+    
+    <!-- Breadcrumb / Back Link -->
+    <a href="/#portfolio" class={`inline-flex items-center gap-2 text-xs font-semibold ${current.text} transition mb-8 group`}>
+      <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Home
+    </a>
+
+    <!-- Hero Header -->
+    <div class="space-y-4">
+      <div class={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold ${current.badge}`}>
+        <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+        Case Study &bull; {category}
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+        {name}
+      </h1>
+      <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed max-w-3xl">
+        {summary}
+      </p>
+    </div>
+
+    <!-- Key Metrics Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10">
+      {metrics.map((metric) => (
+        <div class="p-5 rounded-2xl bg-white dark:bg-[#0B0F19] border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none text-center space-y-1">
+          <span class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">{metric.value}</span>
+          <p class="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">{metric.label}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Challenge & Solution Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+      
+      <div class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#0B0F19] border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none space-y-3">
+        <span class="text-xs font-bold uppercase tracking-wider text-rose-500">The Challenge</span>
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white">What needed fixing</h3>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+          {challenge}
+        </p>
+      </div>
+
+      <div class="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#0B0F19] border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none space-y-3">
+        <span class="text-xs font-bold uppercase tracking-wider text-emerald-500">The Solution</span>
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white">How we engineered success</h3>
+        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+          {solution}
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Deliverables Checklist -->
+    <div class="mt-12 p-8 rounded-2xl bg-slate-100 dark:bg-[#080B14] border border-slate-200 dark:border-white/[0.06] space-y-5">
+      <div>
+        <span class={`text-xs uppercase font-semibold tracking-wider ${current.text}`}>Key Deliverables</span>
+        <h3 class="text-xl font-bold text-slate-900 dark:text-white mt-1">What We Delivered</h3>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        {deliverables.map((item) => (
+          <div class="flex items-start gap-2.5">
+            <svg class={`w-4 h-4 shrink-0 mt-0.5 ${current.text}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <span class="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Tech Stack Used -->
+    <div class="mt-10 p-6 rounded-2xl bg-white dark:bg-[#0B0F19] border border-slate-200 dark:border-white/[0.08] space-y-3 shadow-sm dark:shadow-none">
+      <span class="text-xs uppercase font-semibold tracking-wider text-slate-500">Tech Stack & Tools</span>
+      <div class="flex flex-wrap gap-2 pt-1">
+        {technologies.map((tech) => (
+          <span class="px-3 py-1 rounded-lg bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 text-xs font-mono font-medium text-slate-800 dark:text-slate-200">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class={`mt-14 p-8 sm:p-10 rounded-3xl bg-gradient-to-r ${current.buttonGradient} text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl ${current.shadow}`}>
+      <div>
+        <h3 class="text-2xl font-bold">Inspired by this project?</h3>
+        <p class="text-white/80 text-xs sm:text-sm mt-1">Let's discuss how we can build something exceptional for your brand.</p>
+      </div>
+      <a href="/#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-slate-950 font-bold text-xs tracking-wide hover:bg-slate-100 transition shrink-0 shadow-md">
+        Start a Conversation
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</Layout>

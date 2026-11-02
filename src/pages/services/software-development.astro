@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Custom Software Development | Velixoft">
+  <div class="max-w-5xl mx-auto px-6 py-12 lg:py-20">
+    
+    <!-- Breadcrumb / Back Link -->
+    <a href="/#services" class="inline-flex items-center gap-2 text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 dark:hover:text-emerald-300 transition mb-8 group">
+      <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Home
+    </a>
+
+    <!-- Hero Header -->
+    <div class="space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 dark:bg-white/[0.04] border border-emerald-200/80 dark:border-white/[0.08] text-xs font-semibold text-emerald-700 dark:text-emerald-300">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+        Custom Software Engineering
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+        Bespoke Software, Cloud Systems & Scalable APIs
+      </h1>
+      <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed max-w-3xl">
+        When off-the-shelf software falls short, we engineer custom cloud applications, high-throughput microservices, and internal business platforms engineered for stability, speed, and long-term maintainability.
+      </p>
+    </div>
+
+    <!-- Core Offerings Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+      
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#0B0F19] border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-600/15 dark:bg-emerald-600/20 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Full-Stack Cloud Applications</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          Mission-critical web platforms with secure authentication, multi-tenant databases, real-time dashboards, and role-based permissions.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#0B0F19] border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-indigo-600/15 dark:bg-indigo-600/20 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">API Architecture & Microservices</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          High-performance REST & GraphQL APIs built on Node.js/Fastify and Python with sub-millisecond overhead, rate-limiting, and comprehensive documentation.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#0B0F19] border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-purple-600/15 dark:bg-purple-600/20 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Database Design & Optimization</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          Relational and document storage architectures (PostgreSQL, Redis, MongoDB) structured for ACID compliance, indexing efficiency, and seamless backups.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white dark:bg-[#0B0F19] border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-sky-600/15 dark:bg-sky-600/20 text-sky-600 dark:text-sky-400 flex items-center justify-center">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/>
+          </svg>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">DevOps & Cloud Deployment</h3>
+        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+          Automated CI/CD pipelines, containerization with Docker, auto-scaling cloud deployments on AWS/DigitalOcean, and proactive error logging.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Tech Stack Highlights -->
+    <div class="mt-12 p-8 rounded-2xl bg-slate-100 dark:bg-[#080B14] border border-slate-200 dark:border-white/[0.06] space-y-4">
+      <span class="text-xs uppercase font-semibold tracking-wider text-emerald-600 dark:text-emerald-400">Backend & Cloud</span>
+      <h3 class="text-xl font-bold text-slate-900 dark:text-white">Technologies & Systems</h3>
+      <div class="flex flex-wrap gap-2.5 pt-2">
+        {['TypeScript', 'Node.js', 'Fastify', 'Express', 'Python', 'PostgreSQL', 'Redis', 'Docker', 'AWS', 'GitHub Actions'].map((tech) => (
+          <span class="px-3.5 py-1.5 rounded-xl bg-white dark:bg-white/[0.05] border border-slate-200 dark:border-white/10 text-xs font-semibold text-slate-800 dark:text-slate-200 shadow-sm dark:shadow-none">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="mt-14 p-8 sm:p-10 rounded-3xl bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl shadow-emerald-600/25">
+      <div>
+        <h3 class="text-2xl font-bold">Have custom software requirements?</h3>
+        <p class="text-white/80 text-xs sm:text-sm mt-1">Let's architect a robust software solution built specifically for your operations.</p>
+      </div>
+      <a href="/#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-slate-950 font-bold text-xs tracking-wide hover:bg-slate-100 transition shrink-0 shadow-md">
+        Discuss Your Specs
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</Layout>

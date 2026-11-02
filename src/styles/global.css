@@ -3,6 +3,11 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 html {
+  font-size: 110%;
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+}
+
+body {
+  zoom: 1.1;
 }

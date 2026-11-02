@@ -1,0 +1,243 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { slug: 'experienced-team' },
+      props: {
+        title: 'Experienced Team | Velixoft',
+        eyebrow: 'Why Choose Us',
+        heading: 'An Experienced Team Delivering Real-World Craftsmanship',
+        description: 'Our senior engineers, creative designers, and technology consultants bring extensive cross-industry experience to every project we undertake.',
+        themeColor: 'indigo',
+        iconType: 'team',
+        badge: 'Top-Tier Talent',
+        paragraphs: [
+          'At Velixoft, we believe that world-class software and standout design are only as good as the minds behind them. We do not outsource your vision to junior contractors or unvetted third parties.',
+          'Our team has spent years building resilient production systems, high-converting digital storefronts, and elegant brand experiences for startups and enterprises alike. We bring technical maturity, clean code standards, and agile velocity to your corner.'
+        ],
+        pillars: [
+          {
+            title: 'Senior-Level Focus',
+            desc: 'Every project is led and built by seasoned specialists who have architected and scaled production applications.'
+          },
+          {
+            title: 'Agile & Collaborative',
+            desc: 'We work as an extension of your own team with bi-weekly sprint demos, shared roadmap visibility, and proactive updates.'
+          },
+          {
+            title: 'Cross-Disciplinary Rigor',
+            desc: 'Engineers who understand design nuance, and designers who respect performance budgets and code ergonomics.'
+          },
+          {
+            title: 'Pragmatic Engineering',
+            desc: 'No over-engineering or premature abstraction. We build clean, modular solutions that solve immediate needs while scaling effortlessly.'
+          }
+        ]
+      }
+    },
+    {
+      params: { slug: 'custom-solutions' },
+      props: {
+        title: 'Custom Solutions | Velixoft',
+        eyebrow: 'Why Choose Us',
+        heading: 'Tailored Solutions Built For Your Goals, Not Generic Templates',
+        description: 'We reject cookie-cutter approaches. We engineer software architectures, user flows, and brand aesthetics specifically tailored to your business model.',
+        themeColor: 'emerald',
+        iconType: 'solutions',
+        badge: 'Bespoke Engineering',
+        paragraphs: [
+          'Generic website themes and rigid SaaS templates frequently box growing businesses into performance bottlenecks, technical debt, and bland brand differentiation.',
+          'Velixoft builds digital experiences around your actual workflow, your target demographic, and your competitive positioning. You get custom features, high conversion rates, and the freedom to expand without limitations.'
+        ],
+        pillars: [
+          {
+            title: 'Uncompromised Brand Identity',
+            desc: 'Your visual identity is custom-crafted to establish authentic brand authority and outshine generic market competitors.'
+          },
+          {
+            title: 'Optimized Workflows',
+            desc: 'Automate manual processes, integrate proprietary internal APIs, and organize data models around how your business really operates.'
+          },
+          {
+            title: 'Scalable Foundations',
+            desc: 'Clean modular codebases built with modern frameworks that easily adapt as your userbase and feature list expand.'
+          },
+          {
+            title: 'Full Intellectual Property',
+            desc: 'You own 100% of your code, design assets, and infrastructure. Zero vendor lock-in or recurring theme licensing fees.'
+          }
+        ]
+      }
+    },
+    {
+      params: { slug: 'on-time-delivery' },
+      props: {
+        title: 'On-Time Delivery | Velixoft',
+        eyebrow: 'Why Choose Us',
+        heading: 'Reliable, Rapid & On-Time Project Delivery',
+        description: 'Time-to-market matters. We respect your schedule, provide realistic scoping, and consistently deliver agreed milestones without compromising quality.',
+        themeColor: 'sky',
+        iconType: 'delivery',
+        badge: 'Punctual Execution',
+        paragraphs: [
+          'Software development projects are notorious for missed deadlines and scope creep. At Velixoft, we enforce transparent sprint planning, realistic roadmaps, and continuous deployment so you are never left guessing.',
+          'From initial technical architecture through staging and final launch verification, we keep feedback loops tight and deliver on our promises on schedule.'
+        ],
+        pillars: [
+          {
+            title: 'Milestone-Driven Sprints',
+            desc: 'Clear scope breakdowns and weekly progress check-ins so you see working code and verified deliverables every step of the way.'
+          },
+          {
+            title: 'Continuous Integration & Review',
+            desc: 'Automated testing, staging previews, and automated linting prevent last-minute integration surprises.'
+          },
+          {
+            title: 'Realistic Scoping',
+            desc: 'We invest time in upfront discovery to identify edge cases early, delivering predictable timelines without false promises.'
+          },
+          {
+            title: 'Rapid Market Launch',
+            desc: 'Launch your Minimum Viable Product (MVP) or new website on time, allowing you to validate and capture customer revenue faster.'
+          }
+        ]
+      }
+    },
+    {
+      params: { slug: 'long-term-support' },
+      props: {
+        title: 'Long-Term Support | Velixoft',
+        eyebrow: 'Why Choose Us',
+        heading: 'Dedicated Long-Term Support & Evolution',
+        description: 'Launching your product is just Day One. We provide proactive monitoring, security updates, feature scaling, and ongoing guidance long after launch.',
+        themeColor: 'pink',
+        iconType: 'support',
+        badge: 'Ongoing Partnership',
+        paragraphs: [
+          'Websites and digital products require continuous care to maintain peak performance, search rankings, and ironclad security. Our long-term partnership model ensures your digital assets never stagnate or fall behind.',
+          'Whether you need quick feature additions, database optimization, or third-party API adjustments, Velixoft remains your dedicated, reliable technology partner.'
+        ],
+        pillars: [
+          {
+            title: 'Proactive Health & Security',
+            desc: 'Regular dependency updates, security vulnerability patching, and SSL certificate maintenance.'
+          },
+          {
+            title: 'Continuous Performance Tuning',
+            desc: 'Monitoring Core Web Vitals, server response times, and database query latency to ensure sustained sub-second page loads.'
+          },
+          {
+            title: 'Iterative Feature Roadmap',
+            desc: 'Scale your product based on actual user feedback with prioritized backlog sprints and rapid deployments.'
+          },
+          {
+            title: 'Guaranteed Availability',
+            desc: 'Fast communication channels and direct engineering access whenever questions, critical updates, or opportunities arise.'
+          }
+        ]
+      }
+    }
+  ];
+}
+
+const { title, eyebrow, heading, description, themeColor, badge, paragraphs, pillars } = Astro.props;
+
+const colorStyles: Record<string, { badge: string; iconBg: string; text: string; buttonGradient: string; shadow: string }> = {
+  indigo: {
+    badge: 'bg-indigo-50 dark:bg-white/[0.04] border-indigo-200/80 dark:border-white/[0.08] text-indigo-700 dark:text-indigo-300',
+    iconBg: 'bg-indigo-600/15 dark:bg-indigo-600/20 text-indigo-600 dark:text-indigo-400',
+    text: 'text-indigo-600 dark:text-indigo-400',
+    buttonGradient: 'from-indigo-600 to-indigo-500',
+    shadow: 'shadow-indigo-600/25'
+  },
+  emerald: {
+    badge: 'bg-emerald-50 dark:bg-white/[0.04] border-emerald-200/80 dark:border-white/[0.08] text-emerald-700 dark:text-emerald-300',
+    iconBg: 'bg-emerald-600/15 dark:bg-emerald-600/20 text-emerald-600 dark:text-emerald-400',
+    text: 'text-emerald-600 dark:text-emerald-400',
+    buttonGradient: 'from-emerald-600 to-teal-500',
+    shadow: 'shadow-emerald-600/25'
+  },
+  sky: {
+    badge: 'bg-sky-50 dark:bg-white/[0.04] border-sky-200/80 dark:border-white/[0.08] text-sky-700 dark:text-sky-300',
+    iconBg: 'bg-sky-600/15 dark:bg-sky-600/20 text-sky-600 dark:text-sky-400',
+    text: 'text-sky-600 dark:text-sky-400',
+    buttonGradient: 'from-sky-600 to-indigo-600',
+    shadow: 'shadow-sky-600/25'
+  },
+  pink: {
+    badge: 'bg-pink-50 dark:bg-white/[0.04] border-pink-200/80 dark:border-white/[0.08] text-pink-700 dark:text-pink-300',
+    iconBg: 'bg-pink-600/15 dark:bg-pink-600/20 text-pink-600 dark:text-pink-400',
+    text: 'text-pink-600 dark:text-pink-400',
+    buttonGradient: 'from-pink-600 via-purple-600 to-indigo-600',
+    shadow: 'shadow-pink-600/25'
+  }
+};
+
+const currentStyles = colorStyles[themeColor] || colorStyles.indigo;
+---
+
+<Layout title={title}>
+  <div class="max-w-5xl mx-auto px-6 py-12 lg:py-20">
+    
+    <!-- Breadcrumb / Back Link -->
+    <a href="/#about" class={`inline-flex items-center gap-2 text-xs font-semibold ${currentStyles.text} transition mb-8 group`}>
+      <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 19l-7-7 7-7"/>
+      </svg>
+      Back to Home
+    </a>
+
+    <!-- Hero Header -->
+    <div class="space-y-4">
+      <div class={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-semibold ${currentStyles.badge}`}>
+        <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+        {eyebrow} &bull; {badge}
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+        {heading}
+      </h1>
+      <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed max-w-3xl">
+        {description}
+      </p>
+    </div>
+
+    <!-- Narrative Paragraphs -->
+    <div class="mt-8 space-y-4 text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl">
+      {paragraphs.map((p) => (
+        <p>{p}</p>
+      ))}
+    </div>
+
+    <!-- Key Pillars Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+      {pillars.map((pillar, i) => (
+        <div class="p-6 rounded-2xl bg-white dark:bg-[#0B0F19] border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none space-y-2">
+          <div class="flex items-center gap-2.5">
+            <span class={`w-6 h-6 rounded-lg ${currentStyles.iconBg} flex items-center justify-center font-mono text-xs font-bold`}>
+              0{i + 1}
+            </span>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white">{pillar.title}</h3>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed pt-1">
+            {pillar.desc}
+          </p>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA Section -->
+    <div class={`mt-14 p-8 sm:p-10 rounded-3xl bg-gradient-to-r ${currentStyles.buttonGradient} text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl ${currentStyles.shadow}`}>
+      <div>
+        <h3 class="text-2xl font-bold">Experience the Velixoft difference</h3>
+        <p class="text-white/80 text-xs sm:text-sm mt-1">Let's discuss how our approach can accelerate your business goals.</p>
+      </div>
+      <a href="/#contact" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-slate-950 font-bold text-xs tracking-wide hover:bg-slate-100 transition shrink-0 shadow-md">
+        Get in Touch
+        <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+  </div>
+</Layout>
